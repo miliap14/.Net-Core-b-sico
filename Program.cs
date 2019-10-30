@@ -21,17 +21,23 @@ namespace etapa1
             escuela.Cursos.Add( new Curso (){ Nombre = "202", Jornada = TiposJornada.Tarde });
 
             var otraColeccion = new List<Curso>{
-                new Curso(){ Nombre = "101"},
-                new Curso(){ Nombre = "201"},
-                new Curso(){ Nombre = "301"},
+                new Curso(){ Nombre = "401", Jornada = TiposJornada.Mañana},
+                new Curso(){ Nombre = "501", Jornada = TiposJornada.Mañana},
+                new Curso(){ Nombre = "502", Jornada = TiposJornada.Tarde},
             };
 
-            escuela.Cursos.AddRange();
-        
+            Curso tmp = new Curso { Nombre = "101-Vacacional", Jornada = TiposJornada.Noche};
+            escuela.Cursos.AddRange(otraColeccion);
+            escuela.Cursos.Add(tmp);
 
-            Console.WriteLine(escuela);
-            System.Console.WriteLine("============");
+            escuela.Cursos.RemoveAll(Predicado);
             ImprimirCursosEscuela(escuela);
+          
+        }
+
+        private static bool Predicado(Curso obj)
+        {
+            return obj.Nombre == "301";
         }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
