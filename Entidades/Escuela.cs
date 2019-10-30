@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 
 namespace CoreEscuela.Entidades //Dentro de este espacio creamos todas las entidades
@@ -7,7 +8,7 @@ namespace CoreEscuela.Entidades //Dentro de este espacio creamos todas las entid
     {
         //Atribuos -> Cualidades, adjetivos, lo que es
         //Metodos -> Acciones
-
+        public string UniqueId { get; private set; } = Guid.NewGuid().ToString();
         string nombre;
         public string Nombre 
         { 
