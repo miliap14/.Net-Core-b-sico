@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CoreEscuela.Entidades //Dentro de este espacio creamos todas las entidades
 {
-    class Escuela
+    public class Escuela
     {
         //Atribuos -> Cualidades, adjetivos, lo que es
         //Metodos -> Acciones
