@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreEscuela.Entidades;
 
 namespace CoreEscuela
@@ -23,7 +24,12 @@ namespace CoreEscuela
 
             CargarCursos();
             CargarAsignaturas();
-            CargarAlumnos();
+
+            foreach (var curso in Escuela.Cursos)
+            {
+                curso.Alumnos.AddRange(CargarAlumnos());                
+            }
+
             CargarEvaluaciones();
         }
 
@@ -44,13 +50,23 @@ namespace CoreEscuela
                     new Asignatura{ Nombre = "Castellao"},
                     new Asignatura{ Nombre = "Ciencias Naturales"}
                 };
-                curso.Asignaturas.AddRange(listaAsignaturas);
+                curso.Asignaturas = listaAsignaturas;
             }
         }
 
-        private void CargarAlumnos()
+        private IEnumerable<Alumno> CargarAlumnos()
         {
-            throw new NotImplementedException();
+            string[] nombre1 = {"Emiliano", "Martín", "Eduardo", "Juan", "Gastón", "Alejandro"};
+            string[] apellido1 = {"Piovano", "Pomella", "Nóbrega", "Malacalza", "Ripol", "Almada"};
+            string[] nombre2 = {"Jesús", "Oscar", "Ceferino", "Francisco", "David", "Omar"};
+
+            var listaAlumnos = from n1 in nombre1
+                                from n2 in nombre2
+                                from a1 in apellido1
+                                select new Alumno{ Nombre = $"{n1} {n2} {a1}" };
+
+            return listaAlumnos;
+
         }
 
         private void CargarCursos()
