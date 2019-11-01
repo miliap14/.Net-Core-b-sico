@@ -17,7 +17,11 @@ namespace CoreEscuela
             Printer.Beep();
             ImprimirCursosEscuela(engine.Escuela);
             
-          
+            Printer.DrawLine();
+            Printer.DrawLine();
+            Printer.DrawLine();
+            Printer.WriteTitle("Pruebas de polimorfismo");
+            
         }
 
         private static bool Predicado(Curso obj)
